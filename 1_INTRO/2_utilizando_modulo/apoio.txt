@@ -1,0 +1,1 @@
+O arquivo foi lido pelo require feito no file system, como teste do modulo.
