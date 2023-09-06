@@ -11,5 +11,5 @@ const server = http.createServer((req, res) => {
 })
 
 server.listen(port, () => {
-    console.log(`O servidor está funcionando na porta ${port}`)
+    console.log(`O servidor está funcionando na porta ${port} com força total!`)
 })
