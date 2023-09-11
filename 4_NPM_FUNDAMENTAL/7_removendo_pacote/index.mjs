@@ -6,4 +6,4 @@ const b = [4,3,5,6,8,78,98]
 
 const dif = _.difference(b,a)
 
-console.log(chalk.bgRed.bold(dif))
+console.log(`A diferença nos arrays a e b é: ${chalk.bgRed.bold(dif)}`)
