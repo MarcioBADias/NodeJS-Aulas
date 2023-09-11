@@ -8,7 +8,7 @@ const operations = () => {
         {
             type: 'list',
             name: 'action',
-            message: 'Escolha uma operação abaixo:',
+            message: chalk.bgBlueBright(' Escolha uma operação abaixo: '),
             choices: [
                 'Criar conta',
                 'Consultar Saldo',
