@@ -3,4 +3,21 @@ import inquirer from 'inquirer'
 
 import fs from 'fs'
 
-console.log(chalk.bgBlue(' iniciando projeto accounts '))
+const operations = () => {
+    inquirer.prompt([
+        {
+            type: 'list',
+            name: 'action',
+            message: 'Escolha uma operação abaixo:',
+            choices: [
+                'Criar conta',
+                'Consultar Saldo',
+                'Depositar',
+                'Sacar',
+                'Sair'
+            ]
+        }
+    ])
+    .then()
+    .catch(err => console.log(err))
+}
