@@ -21,3 +21,5 @@ const operations = () => {
     .then()
     .catch(err => console.log(err))
 }
+
+operations()
