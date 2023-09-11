@@ -18,7 +18,11 @@ const operations = () => {
             ]
         }
     ])
-    .then()
+    .then(answer => {
+        const action = chalk.bgGreenBright.white(` ${answer['action']} `)
+
+        console.log(action)
+    })
     .catch(err => console.log(err))
 }
 
