@@ -60,8 +60,23 @@ const operations = () => {
     ])
     .then(answer => {
         const action = answer['action']
-        if(action === 'Criar conta'){
-            createAccount()
+        
+        switch (action) {
+            case 'Criar conta':
+                createAccount()
+                break
+            case 'Consultar Saldo':
+                break
+            case 'Depositar':
+                break
+            case 'Sacar':
+                break
+            case 'Sair':
+                console.log(chalk.bgBlueBright.black('Obrigado por utilisar nosso banco!'))
+                process.exit()
+                break
+            default:
+                console.log('Selecione uma das opções acima')
         }
     })
     .catch(err => console.log(err))
