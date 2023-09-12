@@ -3,6 +3,11 @@ import inquirer from 'inquirer'
 
 import fs from 'fs'
 
+const createAccount = () => {
+    console.log(chalk.bgGreen.whiteBright(' Parabens por ter criado uma conta conosco! '))
+    console.log(chalk.green(' Escolha seu tipo de conta: '))
+}
+
 const operations = () => {
     inquirer.prompt([
         {
@@ -19,9 +24,10 @@ const operations = () => {
         }
     ])
     .then(answer => {
-        const action = chalk.bgGreenBright.white(` ${answer['action']} `)
-
-        console.log(action)
+        const action = answer['action']
+        if(action === 'Criar conta'){
+            createAccount()
+        }
     })
     .catch(err => console.log(err))
 }
