@@ -13,9 +13,10 @@ const createAccount = () => {
 
 const checkAccount = (accoountName) => {
     if(!fs.existsSync(`accounts/${accoountName}.json`)){
-        console.log(chalk.bgRed.black(`Está consta não existe, escolha outro nome!`))
         return false
     }
+
+    return true
 }
 
 const bildingAccount = () => {
@@ -34,7 +35,7 @@ const bildingAccount = () => {
             fs.mkdirSync('accounts')
         }
 
-        if(fs.existsSync(`accounts/${accoountName}.json`)){
+        if(checkAccount(accoountName)){
             console.log(chalk.bgRed.black(`A conta ${accoountName} já existe, tente outro nome`))
             bildingAccount()
             return
