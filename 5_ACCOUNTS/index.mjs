@@ -10,6 +10,14 @@ const createAccount = () => {
     bildingAccount()
 }
 
+
+const checkAccount = (accoountName) => {
+    if(!fs.existsSync(`accounts/${accoountName}.json`)){
+        console.log(chalk.bgRed.black(`Está consta não existe, escolha outro nome!`))
+        return false
+    }
+}
+
 const bildingAccount = () => {
     inquirer.prompt([
         {
@@ -68,6 +76,7 @@ const operations = () => {
             case 'Consultar Saldo':
                 break
             case 'Depositar':
+                deposit()
                 break
             case 'Sacar':
                 break
