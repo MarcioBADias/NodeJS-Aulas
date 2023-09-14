@@ -10,7 +10,6 @@ const createAccount = () => {
     bildingAccount()
 }
 
-
 const checkAccount = (accoountName) => {
     if(!fs.existsSync(`accounts/${accoountName}.json`)){
         return false
@@ -48,6 +47,26 @@ const bildingAccount = () => {
         
         console.log(chalk.bgGreen.black(`Parabens ${accoountName}, sua conta foi criada com sucesso!`))
         operations()
+    })
+    .catch(err => console.log(err))
+}
+
+const deposit = () => {
+    inquirer.prompt([
+        {
+            name: 'accoountName',
+            message: 'Digite o nome da conta a depositar:'
+        }
+    ])
+    .then((answer) => {
+        const accoountName = answer.name
+
+        if(checkAccount(accoountName)){
+            console.log(chalk.bgRed.black(`Está consta não existe, escolha outro nome!`))
+            deposit()
+            return
+        }
+        console.log(accoountName)
     })
     .catch(err => console.log(err))
 }
