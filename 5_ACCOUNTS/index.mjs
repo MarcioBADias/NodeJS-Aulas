@@ -22,7 +22,7 @@ const bildingAccount = () => {
     inquirer.prompt([
         {
             name: 'accoountName',
-            message: 'Digite um nome para sua conta:'
+            message: 'Digite o nome da sua conta:'
         }
     ])
     .then(answer => {
