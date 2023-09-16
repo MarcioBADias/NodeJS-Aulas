@@ -12,6 +12,7 @@ const createAccount = () => {
 
 const checkAccount = (accoountName) => {
     if(!fs.existsSync(`accounts/${accoountName}.json`)){
+        console.log(chalk.bgRed.black(`A consta ${accoountName} não existe, escolha outro nome!`))
         return false
     }
 
@@ -34,7 +35,7 @@ const bildingAccount = () => {
             fs.mkdirSync('accounts')
         }
 
-        if(checkAccount(accoountName)){
+        if(fs.existsSync(`accounts/${accoountName}.json`)){
             console.log(chalk.bgRed.black(`A conta ${accoountName} já existe, tente outro nome`))
             bildingAccount()
             return
@@ -59,12 +60,10 @@ const deposit = () => {
         }
     ])
     .then((answer) => {
-        const accoountName = answer.name
+        const accoountName = answer.accoountName
 
-        if(checkAccount(accoountName)){
-            console.log(chalk.bgRed.black(`Está consta não existe, escolha outro nome!`))
-            deposit()
-            return
+        if(!checkAccount(accoountName)){
+            return deposit()
         }
         console.log(accoountName)
     })
