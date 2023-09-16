@@ -73,7 +73,7 @@ const deposit = () => {
         ])
         .then((answer) => {
             const amount = answer.amount
-
+            addAmount(accoountName, amount)
             operations()
         })
         .catch(err => console.log(err))
@@ -82,11 +82,18 @@ const deposit = () => {
 }
 
 const addAmount = (accoountName, amount) => {
-    
+    const account = getAccount(accoountName)
+
+    console.log(account)
 }
 
 const getAccount = (accoountName) => {
-    
+    const accoountJSON = fs.readFileSync(`accounts/${accoountName}.json`, {
+        encoding: 'utf8',
+        flag: 'r'
+    })
+    console.log(accoountName)
+    return JSON.parse(accoountJSON)
 }
 
 const operations = () => {
