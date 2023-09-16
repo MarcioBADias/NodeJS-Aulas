@@ -10,15 +10,6 @@ const createAccount = () => {
     bildingAccount()
 }
 
-const checkAccount = (accoountName) => {
-    if(!fs.existsSync(`accounts/${accoountName}.json`)){
-        console.log(chalk.bgRed.black(`A consta ${accoountName} não existe, escolha outro nome!`))
-        return false
-    }
-
-    return true
-}
-
 const bildingAccount = () => {
     inquirer.prompt([
         {
@@ -52,6 +43,15 @@ const bildingAccount = () => {
     .catch(err => console.log(err))
 }
 
+const checkAccount = (accoountName) => {
+    if(!fs.existsSync(`accounts/${accoountName}.json`)){
+        console.log(chalk.bgRed.black(`A consta ${accoountName} não existe, escolha outro nome!`))
+        return false
+    }
+
+    return true
+}
+
 const deposit = () => {
     inquirer.prompt([
         {
@@ -65,9 +65,28 @@ const deposit = () => {
         if(!checkAccount(accoountName)){
             return deposit()
         }
-        console.log(accoountName)
+        inquirer.prompt([
+            {
+                name: 'amount',
+                message: `Olá ${accoountName}! Quanto voê deseja depositar?`
+            }
+        ])
+        .then((answer) => {
+            const amount = answer.amount
+
+            operations()
+        })
+        .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
+}
+
+const addAmount = (accoountName, amount) => {
+    
+}
+
+const getAccount = (accoountName) => {
+    
 }
 
 const operations = () => {
