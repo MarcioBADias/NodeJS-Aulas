@@ -34,7 +34,7 @@ const bildingAccount = () => {
 
         fs.writeFileSync(
             `accounts/${accoountName}.json`, 
-            '{balance: 0}',
+            '{"balance": 0}',
             (err) => console.log(err))
         
         console.log(chalk.bgGreen.black(`Parabens ${accoountName}, sua conta foi criada com sucesso!`))
@@ -84,7 +84,9 @@ const deposit = () => {
 const addAmount = (accoountName, amount) => {
     const account = getAccount(accoountName)
 
-    console.log(account)
+    if(!amount){
+        console.log(`${accoountName}, identificamos um erro, tente novamente.`)
+    }
 }
 
 const getAccount = (accoountName) => {
