@@ -102,6 +102,34 @@ const addAmount = (accoountName, amount) => {
         ))
 }
 
+const widthDrawAmount = (accountName, amount) => {
+    const accountData = getAccount(accountName)
+
+        if(!amount){
+            console.log(chalk.bgRed.black(`Ops, ${accountName}! Acho que esqueceu de digitar o valor, tente novamente?`))
+            return widthDraw()
+        }
+
+        if(amount > accountData.balance){
+            console.log(chalk.bgRed.black(`Saldo indisponível.`))
+            return widthDraw()
+        }
+
+        accountData.balance = parseFloat(accountData.balance) - parseFloat(amount)
+
+        fs.writeFileSync(
+            `accounts/${accountName}.json`,
+            JSON.stringify(accountData),
+            (err) => console.log(err)
+             )
+
+        console.log(
+            chalk.bgGreen(
+                `${accountName}, seu saque de ${amount} foi realziado com sucesso. Seu saldo em conta atual é de ${accountData.balance}`
+            ))
+        operations()
+}
+
 const getAccount = (accoountName) => {
     const accoountJSON = fs.readFileSync(`accounts/${accoountName}.json`, {
         encoding: 'utf8',
@@ -157,8 +185,7 @@ const widthDraw = () => {
         ]).then(answer => {
             const amount = answer.amount
 
-            console.log(amount)
-            
+            widthDrawAmount(accountName, amount)
         }).catch(err => console.log(err))
     })
     .catch(err => console.log(err))
