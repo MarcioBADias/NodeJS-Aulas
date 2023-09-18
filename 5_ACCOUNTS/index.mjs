@@ -135,6 +135,35 @@ const getAccountBalance = () => {
     .catch(err => console.log(err))
 }
 
+const widthDraw = () => {
+    inquirer.prompt([
+        {
+            name: 'accountName',
+            message: 'Digite o nome da sua conta:'
+        }
+    ])
+    .then(answer => {
+        const accountName = answer.accountName
+
+        if(!checkAccount(accountName)){
+            return widthDraw()
+        }
+
+        inquirer.prompt([
+            {
+                name: 'amount',
+                message: `Ola ${accountName}! Quando deseja sacar?`
+            }
+        ]).then(answer => {
+            const amount = answer.amount
+
+            console.log(amount)
+            
+        }).catch(err => console.log(err))
+    })
+    .catch(err => console.log(err))
+}
+
 const operations = () => {
     inquirer.prompt([
         {
@@ -164,6 +193,7 @@ const operations = () => {
                 deposit()
                 break
             case 'Sacar':
+                widthDraw()
                 break
             case 'Sair':
                 console.log(chalk.bgBlueBright.black('Obrigado por utilisar nosso banco!'))
