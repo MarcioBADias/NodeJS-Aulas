@@ -213,7 +213,12 @@ const transf = () => {
         ])
         .then(answer => {
             const amount = answer.amount
-
+            const accountData = getAccount(accountName)
+            
+            if(amount > accountData.balance){
+                console.log(chalk.bgRed.black(`Saldo indisponível.`))
+                return transf()
+            }
             widthDrawAmount(accountName, amount)
             inquirer.prompt([
                 {
