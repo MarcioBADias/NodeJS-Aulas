@@ -228,6 +228,11 @@ const transf = () => {
                     transf()
                 }
                 addAmount(accountName, amount)
+                
+                console.log(chalk.bgGreen(
+                    `Sua tranferência de ${amount} para ${accountName} foi realizada com sucesso!`
+                ))
+                
                 operations()
             })
         })
