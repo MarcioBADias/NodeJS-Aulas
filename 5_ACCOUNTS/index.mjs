@@ -10,7 +10,7 @@ const createAccount = () => {
     bildingAccount()
 }
 
-const bildingAccount = () => {
+const bildingAccount = () => {-
     inquirer.prompt([
         {
             name: 'accoountName',
@@ -74,6 +74,10 @@ const deposit = () => {
         .then((answer) => {
             const amount = answer.amount
             addAmount(accoountName, amount)
+            
+            console.log(chalk.bgGreen(
+                `Foi depositado o valor de R$${amount} na sua conta! Obrigado ${accoountName}!`
+            ))
             operations()
         })
         .catch(err => console.log(err))
@@ -97,9 +101,6 @@ const addAmount = (accoountName, amount) => {
         JSON.stringify(accountData),
         (err) => console.log(err)
         )
-    console.log(chalk.bgGreen(
-        `Foi depositado o valor de R$${amount} na sua conta! Obrigado ${accoountName}!`
-        ))
 }
 
 const widthDrawAmount = (accountName, amount) => {
@@ -122,12 +123,6 @@ const widthDrawAmount = (accountName, amount) => {
             JSON.stringify(accountData),
             (err) => console.log(err)
              )
-
-        console.log(
-            chalk.bgGreen(
-                `${accountName}, seu saque de ${amount} foi realziado com sucesso. Seu saldo em conta atual é de ${accountData.balance}`
-            ))
-        operations()
 }
 
 const getAccount = (accoountName) => {
@@ -186,7 +181,57 @@ const widthDraw = () => {
             const amount = answer.amount
 
             widthDrawAmount(accountName, amount)
+            console.log(
+                chalk.bgGreen(
+                    `${accountName}, seu saque de ${amount} foi realziado com sucesso. Seu saldo em conta atual é de ${accountData.balance}`
+                ))
+            operations()
         }).catch(err => console.log(err))
+    })
+    .catch(err => console.log(err))
+}
+
+const transf = () => {
+    inquirer.prompt([
+        {
+            name: 'accountName',
+            message: 'Digite o nome da sua conta:'
+        }
+    ])
+    .then(answer => {
+        const accountName = answer.accountName
+
+        if(!checkAccount(accountName)){
+            return transf()
+        }
+
+        inquirer.prompt([
+            {
+                name: 'amount',
+                message: `Olá ${accountName}! Qual valor deseja transferir?`
+            }
+        ])
+        .then(answer => {
+            const amount = answer.amount
+
+            widthDrawAmount(accountName, amount)
+            inquirer.prompt([
+                {
+                    name: 'accountName',
+                    message: `Digite o nome da conta que deseja depositar ${amount} reais?`
+                }
+            ]).then(answer => {
+                const accountName = answer.accountName
+
+                if(!checkAccount(accountName)){
+                    console.log(chalk.bgRed(`A conta ${accountName} não existe em nosso sistema ou está errada, tente novamente mais tarde`))
+                    transf()
+                }
+                addAmount(accountName, amount)
+                operations()
+            })
+        })
+        .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
 }
@@ -200,6 +245,7 @@ const operations = () => {
             choices: [
                 'Criar conta',
                 'Consultar Saldo',
+                'Transferir',
                 'Depositar',
                 'Sacar',
                 'Sair'
@@ -215,6 +261,9 @@ const operations = () => {
                 break
             case 'Consultar Saldo':
                 getAccountBalance()
+                break
+            case 'Transferir':
+                transf()
                 break
             case 'Depositar':
                 deposit()
