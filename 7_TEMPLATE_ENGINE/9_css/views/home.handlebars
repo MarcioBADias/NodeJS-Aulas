@@ -1,0 +1,10 @@
+{{#with user}}
+    <h1>Olá Handlebars</h1>
+
+    <p>O nome do usuário é <strong>{{name}}</strong> e sua idade é <span style="color: red;">{{age}}</span></p>
+{{/with}}
+{{#if auth}}
+    <h2>Sua idade te autoriza continuar para ver a <a href="/dashboard">senha</a></h2>
+{{else}}
+    <h2>Sua idade é <strong>{{user.age}}</strong> portanto não pode ver a senha, chame um maior de 18 anos</h2>
+{{/if}}
