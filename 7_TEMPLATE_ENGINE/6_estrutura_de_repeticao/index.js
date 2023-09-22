@@ -8,7 +8,8 @@ app.set('view engine', 'handlebars')
 
 app.get('/dashboard', (req, res) => {
     const password = 'teste'
-    res.render('dashboard', {password})
+    const itens = ['item 01', 'item 02', 'item 03']
+    res.render('dashboard', {password, itens})
 })
 
 app.get('/', (req, res) => {
