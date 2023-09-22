@@ -21,6 +21,37 @@ app.get('/post', (req, res) => {
     res.render('blogpost', {post})
 })
 
+app.get('/blog', (req, res) => {
+    const posts = [
+        {
+            title: 'Aprendendo Node JS',
+            category: 'backend',
+            body: 'Nesse aprendizado voce vai poder...',
+            coments: 4
+        },
+        {
+            title: 'Aprendendo React',
+            category: 'frontend',
+            body: 'Nesse aprendizado voce vai poder...',
+            coments: 9
+        },
+        {
+            title: 'Aprendendo Next JS',
+            category: 'frontend',
+            body: 'Nesse aprendizado voce vai poder...',
+            coments: 6
+        },
+        {
+            title: 'Aprendendo JAVA',
+            category: 'backend',
+            body: 'Nesse aprendizado voce vai poder...',
+            coments: 2
+        }
+    ]
+
+    res.render('blog', {posts})
+})
+
 app.get('/dashboard', (req, res) => {
     const password = 'teste'
     const itens = ['item 01', 'item 02', 'item 03']
