@@ -9,10 +9,18 @@ app.engine('handlebars', engine())
 app.set('views engine', 'handlebars')
 
 app.use(express.static('public'))
+app.use(express.urlencoded({
+    extended: true
+}))
+app.use(express.json())
 
 app.get('/', (req, res) => {
     res.render('home.handlebars')
 })
+
+app.post('/books/insertbook', (req, res) => {
+
+}) 
 
 const conn = mysql.createConnection({
     host: 'localhost',
