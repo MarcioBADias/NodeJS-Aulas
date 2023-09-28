@@ -19,7 +19,18 @@ app.get('/', (req, res) => {
 })
 
 app.post('/books/insertbook', (req, res) => {
+    const title = req.body.title
+    const pageqty = req.body.pageqty
 
+    const query = `INSERT INTO books (title, pageqty) VALUES ('${title}', '${pageqty}')`
+
+    conn.query(query, (err) => {
+        if(err){
+            console.log(err)
+        }
+
+        res.redirect('/')
+    })
 }) 
 
 const conn = mysql.createConnection({
