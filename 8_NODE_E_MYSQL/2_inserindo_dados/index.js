@@ -18,6 +18,21 @@ app.get('/', (req, res) => {
     res.render('home.handlebars')
 })
 
+app.get('/books', (req, res) => {
+    const query = 'SELECT * FROM books'
+
+    conn.query(query, (err, data) => {
+        if(err){
+            console.log(err)
+            return
+        }
+
+        const books = data
+        
+        res.render('books.handlebars', { books })
+    })
+})
+
 app.post('/books/insertbook', (req, res) => {
     const title = req.body.title
     const pageqty = req.body.pageqty
@@ -27,9 +42,10 @@ app.post('/books/insertbook', (req, res) => {
     conn.query(query, (err) => {
         if(err){
             console.log(err)
+            return
         }
 
-        res.redirect('/')
+        res.redirect('/books')
     })
 }) 
 
