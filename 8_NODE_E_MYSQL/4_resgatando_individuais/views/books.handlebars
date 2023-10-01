@@ -2,7 +2,8 @@
 <div class="form">
     {{#each books}}
     <div>
-        #{{this.id}} - <strong>{{this.title}}</strong>: {{this.pageqty}}
+        #{{this.id}} - 
+        <a href="/books/{{this.id}}"><strong>{{this.title}}</strong>:</a> {{this.pageqty}}
     </div>
     {{/each}}
     <div>

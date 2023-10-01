@@ -14,10 +14,6 @@ app.use(express.urlencoded({
 }))
 app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.render('home.handlebars')
-})
-
 app.get('/books', (req, res) => {
     const query = 'SELECT * FROM books'
 
@@ -31,6 +27,28 @@ app.get('/books', (req, res) => {
         
         res.render('books.handlebars', { books })
     })
+})
+
+app.get('/books/:id', (req, res) => {
+    const id = req.params.id
+
+    const query = `SELECT * FROM books WHERE id = ${id}`
+
+    conn.query(query, (err, data) => {
+        if(err){
+            console.log(err)
+            return
+        }
+
+        const book = data[0]
+        console.log(book)
+
+        res.render('book.handlebars', { book })
+    })
+})
+
+app.get('/', (req, res) => {
+    res.render('home.handlebars')
 })
 
 app.post('/books/insertbook', (req, res) => {
