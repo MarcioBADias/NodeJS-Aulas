@@ -41,7 +41,6 @@ app.get('/books/:id', (req, res) => {
         }
 
         const book = data[0]
-        console.log(book)
 
         res.render('book.handlebars', { book })
     })
