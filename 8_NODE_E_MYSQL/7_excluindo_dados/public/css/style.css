@@ -60,6 +60,17 @@ h1{
     padding: 5px;
 }
 
+.actions{
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.actions input{
+    padding: .5rem 1rem;
+}
+
 footer{
     align-items: center;
     background: yellow;

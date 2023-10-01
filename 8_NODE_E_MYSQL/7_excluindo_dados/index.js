@@ -100,6 +100,21 @@ app.post('/books/uptadebook', (req, res) => {
     })
 })
 
+app.post('/books/delete/:id', (req, res) => {
+    const id = req.params.id
+
+    const query = `DELETE FROM books WHERE id = ${id}`
+
+    conn.query(query, (err) => {
+        if(err){
+            console.log(err)
+            return
+        }
+
+        res.redirect('/books')
+    })
+})
+
 const conn = mysql.createConnection({
     host: 'localhost',
     user: 'root',
