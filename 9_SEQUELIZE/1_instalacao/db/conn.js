@@ -1,4 +1,4 @@
-const { sequelize } = require('sequelize')
+const { Sequelize } = require('sequelize')
 
 const sequelize = new Sequelize('nodesequelize1', 'root', '', {
     host: 'localhost',
@@ -7,9 +7,9 @@ const sequelize = new Sequelize('nodesequelize1', 'root', '', {
 
 try{
     sequelize.authenticate()
-    console.log('Conectamos com sucesso!')
+    console.log('Conectamos com sucesso usando Sequelize!')
 }catch(err){
-    console.log('Não foi possivel conectar:', error)
+    console.log('Não foi possivel conectar:', err)
 }
 
-molude.exports = sequelize
+module.exports = sequelize

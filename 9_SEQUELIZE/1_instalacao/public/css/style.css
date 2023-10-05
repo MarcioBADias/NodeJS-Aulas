@@ -7,18 +7,23 @@
 
 .navbar{
     align-items: center;
+    display: flex;
+    justify-content: space-around;
+    height: 10vh;
+    margin-bottom: 1rem;
     border-bottom: 1px solid #ccc;
-    height: 100px;
-    padding: .5rem;
 }
 
 .navbar ul{
-    display: flex;
     list-style: none;
 }
 
-.navbar ul li{
-    justify-content: space-around;
+.navbar ul li a{
+    text-decoration: none;
+}
+
+.navbar ul li a:hover{
+    font-weight: bold;
 }
 
 .title{
