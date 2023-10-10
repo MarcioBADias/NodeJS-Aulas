@@ -79,7 +79,8 @@ ul{
     border-radius: 5px;
     flex: 1 1 29%;
     margin: .5rem;
-    max-width: 30%;
+    min-width: 30%;
+    min-height: 200px;
     padding: .5rem;
 }
 
@@ -91,11 +92,12 @@ ul{
 .item_box__body{
     font-size: 2.5rem;
     padding: .5rem;
+    min-height: 100px;
 }
 
 .item_box_links{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 .item_box_links a,
@@ -108,6 +110,7 @@ ul{
     color: #000;
     cursor: pointer;
     font-size: 1rem;
+    margin-right: .5rem;
 }
 
 .item_box_links .details_btn{
