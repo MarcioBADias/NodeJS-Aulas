@@ -1,0 +1,22 @@
+<div class="container">
+    <a href="/">Voltar</a>
+    <h1 class="title">{{user.name}}</h1>
+    <p>{{user.occupation}}</p>
+</div>
+<div class="container">
+    <strong>Endereços Cadastrados:</strong>
+    {{#each user.Addresses}}
+    <div class="address_box">
+    <p>Endereço <strong>N. {{this.id}}</strong></p>
+    <p>Rua: <strong>{{this.street}}</strong> Número <strong>{{this.number}}</strong></p>
+    <p>Cidade: <strong>{{this.city}}</strong></p>
+    <div>
+        <form action="/address/delete" method="post">
+            <input type="hidden" name="id" value="{{this.id}}">
+            <input type="submit" value="Excluir Endereço" class="delete_btn">
+        </form>
+    </div>
+    </div>
+    {{/each}}
+    
+</div>
