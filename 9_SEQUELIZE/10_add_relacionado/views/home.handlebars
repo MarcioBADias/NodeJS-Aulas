@@ -1,0 +1,32 @@
+<h1 class="title">Bem-vindo ao Sequelize</h1>
+
+<div class="container">
+    <h2 class="title">Usuários Cadastrados</h2>
+    <p>
+        Segue abaixo usuários cadastrados no projeto com suas respectivas profissões:
+    </p>
+</div>
+
+
+<div class="container_box">
+    {{#each users}}
+        <div class="item_box">
+            <p>
+                Nome: <strong>{{this.name}}</strong>
+                <div class="item_box__occupation">
+                    <strong>Profissão:</strong>
+                    <div class="item_box__body">
+                        {{this.occupation}}
+                    </div>
+                    <div class="item_box_links">
+                        <a href="/users/{{this.id}}" class="details_btn">Detalhes</a>
+                        <a href="/users/edit/{{this.id}}" class="edit_btn">Editar</a>
+                        <form action="/users/delete/{{this.id}}" method="post">
+                            <input type="submit" value="Excluir" class="delete_btn">
+                        </form>
+                    </div>
+                </div>
+            </p>
+        </div>
+    {{/each}}
+</div>
