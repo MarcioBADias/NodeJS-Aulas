@@ -4,20 +4,20 @@
     <p>{{user.occupation}}</p>
 </div>
 <div class="container">
-    <strong>Endereços Cadastrados:</strong>
-    {{#each user.Addresses}}
-    <div class="address_box">
-    <p>Endereço <strong>N. {{this.id}}</strong></p>
-    <p>Rua: <strong>{{this.street}}</strong> Número <strong>{{this.number}}</strong></p>
-    <p>Cidade: <strong>{{this.city}}</strong></p>
-    <div>
-        <form action="/address/delete" method="post">
-            <input type="hidden" name="UserId" value="{{this.UserId}}">
-            <input type="hidden" name="id" value="{{this.id}}">
-            <input type="submit" value="Excluir Endereço" class="delete_btn">
-        </form>
-    </div>
-    </div>
-    {{/each}}
-    
+    <h2>Endereços Cadastrados:</h2>
 </div>
+{{#each user.Addresses}}
+    <div class="container">
+        <div class="address_box">
+            <p>Rua: <strong>{{this.street}}</strong> Número <strong>{{this.number}}</strong></p>
+            <p>Cidade: <strong>{{this.city}}</strong></p>
+            <div>
+                <form action="/address/delete" method="post">
+                    <input type="hidden" name="UserId" value="{{this.UserId}}">
+                    <input type="hidden" name="id" value="{{this.id}}">
+                    <input type="submit" value="Excluir Endereço" class="delete_btn">
+                </form>
+            </div>
+        </div>
+    </div>
+{{/each}}

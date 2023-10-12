@@ -20,6 +20,7 @@ ul{
 }
 
 .navbar ul li a{
+    color: #000;
     margin-right: 1rem;
     text-decoration: none;
 }
@@ -66,14 +67,25 @@ ul{
     margin-bottom: 2rem;
 }
 
-.address_container{
-    margin-top: 1rem auto;
-    padding-top: 1rem;
-    border-top: 1px solid #ccc;
-}
 
 .container{
     text-align: center;
+}
+
+.container h2{
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
+.address_box{
+    border-top: 1px solid #ccc;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.address_box .delete_btn{
+    margin-top: 1rem;
+    padding: .5rem;
 }
 
 .container_box{
@@ -95,6 +107,7 @@ ul{
 }
 
 .item_box:hover{
+    background: #2f92fc;
     border: 2px solid aquamarine;
     cursor: pointer;
 }
